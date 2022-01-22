@@ -46,7 +46,7 @@ function App() {
     <>
       <Router>
       <div className="test">
-        <Navbar title='Testing React' mode={mode} changeMode={changeMode} />
+        <Navbar title='Text Utilities' mode={mode} changeMode={changeMode} />
         <Alert alert={alert} />
           <Routes>
             <Route exact path="/" element={<InputTextArea heading='Enter Your Text Below: ' mode={mode} showAlert={showAlert} />}/>

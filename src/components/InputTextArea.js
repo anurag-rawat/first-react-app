@@ -66,9 +66,9 @@ export default function InputTextArea(props) {
             </div>
             <div className='container' style={{color:props.mode==='light'?'black':'white'}}>
                 <h2 className='my-2'>Your Summary</h2>
-                <p><b>{text.split(" ").length}</b> Words And <b>{text.length}</b> Characters</p>
+                <p><b>{text.split(" ").length-1}</b> Words And <b>{text.length}</b> Characters</p>
                 <h2 >Preview</h2>
-                <p>{text}</p>
+                <p>{(text.length === 0)?"Enter Text to preview":text}</p>
             </div>
         </>
     )
