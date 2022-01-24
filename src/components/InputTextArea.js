@@ -59,10 +59,10 @@ export default function InputTextArea(props) {
                     <h2>{props.heading}</h2>
                     <textarea className="form-control" id="text" rows='10' value={text} onChange={update} style={{color: props.mode==='dark'?'white':'black', backgroundColor:props.mode==='dark'?'#272727':'white'}}></textarea>
                 </div>
-                <button className='btn btn-primary mx-1' onClick={convertToUpperCase}>Make Upper Case</button>
-                <button className='btn btn-primary mx-1' onClick={convertToLowerCase}>Make Lower Case</button>
-                <button className='btn btn-primary mx-1' onClick={convertToCamelCase}>Make Camel Case</button>
-                <button className='btn btn-danger mx-1' onClick={clearEverthing}>Clear</button>
+                <button className='btn btn-primary mx-1 my-1' onClick={convertToUpperCase}>Make Upper Case</button>
+                <button className='btn btn-primary mx-1 my-1' onClick={convertToLowerCase}>Make Lower Case</button>
+                <button className='btn btn-primary mx-1 my-1' onClick={convertToCamelCase}>Make Camel Case</button>
+                <button className='btn btn-danger mx-1 my-1' onClick={clearEverthing}>Clear</button>
             </div>
             <div className='container' style={{color:props.mode==='light'?'black':'white'}}>
                 <h2 className='my-2'>Your Summary</h2>
