@@ -48,9 +48,10 @@ function App() {
       <div className="test">
         <Navbar title='Text Utilities' mode={mode} changeMode={changeMode} />
         <Alert alert={alert} />
+        {/* <InputTextArea heading='Enter Your Text Below:' mode={mode} showAlert={showAlert}/> */}
           <Routes>
             <Route exact path="/" element={<InputTextArea heading='Enter Your Text Below: ' mode={mode} showAlert={showAlert} />}/>
-            <Route exact path="/about" element={<About/>} />
+            <Route exact path="/about" element={<About mode={mode}/>} />
           </Routes>
       </div>
       </Router>
