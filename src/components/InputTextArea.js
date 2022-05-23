@@ -6,13 +6,21 @@ export default function InputTextArea(props) {
     const convertToUpperCase = () => {
         let newText = text.toUpperCase();
         setText(newText);
-        props.showAlert("Text Converted to Upper Case","success");
+        if(newText.length === 0){
+            props.showAlert("No Text Found","warning");
+        }else{
+            props.showAlert("Text Converted to Upper Case","success");
+        }
     }
     
     const convertToLowerCase = () => {
         let newText = text.toLowerCase();
         setText(newText);
-        props.showAlert("Text Converted to Lower Case","success");
+        if(newText.length === 0){
+            props.showAlert("No Text Found","warning");
+        }else{
+            props.showAlert("Text Converted to Lower Case","success");
+        }
     }
     
     const convertToCamelCase = () => {
@@ -27,16 +35,11 @@ export default function InputTextArea(props) {
             }
         }
         setText(newText);
-        props.showAlert("Text Converted to Camel Case","success");
-    }
-
-    const copyText = () => {
-        var text = document.getElementById("input-area");
-        text.select();
-        navigator.clipboard.writeText(text.value);
-        document.getSelection().removeAllRanges();
-        props.showAlert("Text Copied to clipboard","success");
-
+        if(newText.length === 0){
+            props.showAlert("No Text Found","warning");
+        }else{
+            props.showAlert("Text Converted to Camel Case","success");
+        }
     }
 
     const clearEverthing = () => {
@@ -54,17 +57,16 @@ export default function InputTextArea(props) {
             <div className='container' style={{color:props.mode==='light'?'black':'white'}}>
                 <div className="mb-4">
                     <h2>{props.heading}</h2>
-                    <textarea className="form-control" id="input-area" rows='10' value={text} onChange={update} style={{color: props.mode==='dark'?'white':'black', backgroundColor:props.mode==='dark'?'#272727':'white'}}></textarea>
+                    <textarea className="form-control" id="text" rows='10' value={text} onChange={update} style={{color: props.mode==='dark'?'white':'black', backgroundColor:props.mode==='dark'?'#272727':'white'}}></textarea>
                 </div>
-                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={convertToUpperCase}>Make Upper Case</button>
-                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={convertToLowerCase}>Make Lower Case</button>
-                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={convertToCamelCase}>Make Camel Case</button>
-                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={copyText}>Copy Text</button>
-                <button disabled={text.length===0} className='btn btn-danger mx-1 my-1' onClick={clearEverthing}>Clear</button>
+                <button className='btn btn-primary mx-1 my-1' onClick={convertToUpperCase}>Make Upper Case</button>
+                <button className='btn btn-primary mx-1 my-1' onClick={convertToLowerCase}>Make Lower Case</button>
+                <button className='btn btn-primary mx-1 my-1' onClick={convertToCamelCase}>Make Camel Case</button>
+                <button className='btn btn-danger mx-1 my-1' onClick={clearEverthing}>Clear</button>
             </div>
             <div className='container' style={{color:props.mode==='light'?'black':'white'}}>
                 <h2 className='my-2'>Your Summary</h2>
-                <p><b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> Words And <b>{text.length}</b> Characters</p>
+                <p><b>{text.split(" ").length-1}</b> Words And <b>{text.length}</b> Characters</p>
                 <h2 >Preview</h2>
                 <p>{(text.length === 0)?"Enter Text to preview":text}</p>
             </div>
